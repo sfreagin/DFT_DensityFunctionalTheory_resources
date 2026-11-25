@@ -4,19 +4,19 @@ MATE 250 · Stephen · 17 November 2026
 
 ## Introduction
 
-Molecular dynamics (MD) simulates the motion of a set of atoms by stepping Newton’s second law forward in time. That law says the force on an atom equals its mass times its acceleration, \(m\, d^2\mathbf{r}/dt^2 = \mathbf{F}\). Integrating it means using the forces at the current positions to advance the positions and velocities by a short timestep. The atoms occupy a periodic cell held at chosen thermodynamic conditions. A potential supplies the force on each atom, and the record of positions and velocities is called a trajectory. From that trajectory one reads thermodynamic state variables, such as the temperature and the kinetic and potential energies, and dynamical quantities, such as how far a molecule travels.
+Molecular dynamics (MD) simulates the motion of a set of atoms by stepping Newton’s second law forward in time. That law says the force on an atom equals its mass times its acceleration, $\(m\, d^2\mathbf{r}/dt^2 = \mathbf{F}\)$. Integrating it means using the forces at the current positions to advance the positions and velocities by a short timestep. The atoms occupy a periodic cell held at chosen thermodynamic conditions. A potential supplies the force on each atom, and the record of positions and velocities is called a trajectory. From that trajectory one reads thermodynamic state variables, such as the temperature and the kinetic and potential energies, and dynamical quantities, such as how far a molecule travels.
 
 This project compares the self-diffusion coefficient of liquid water obtained with three potentials, each following a different set of rules for turning positions into forces. Three trajectories use the TIP4P/2005 classical force field ("classical MD"), three trajectories use a deep neural-network potential (DeepMD) trained on SCAN (strongly constrained and appropriately normed) density-functional data, and one trajectory is ab initio molecular dynamics (AIMD) in which SCAN forces are recomputed at every step. The comparison is whether these three descriptions of the same liquid give the same diffusion coefficient, after the temperature and energy of each run have been checked.
 
 ## 1. What is being compared
 
-Self-diffusion is the random walk of a molecule through the liquid. Collisions with neighboring molecules keep changing its direction, so the average displacement stays near zero while the mean-squared displacement grows with time. For a brief interval at the start, before those collisions, the molecule is still coasting at its thermal velocity. The distance traveled is then proportional to time, and the mean-squared displacement rises as \(t^2\). That interval is the *ballistic rise*. In liquid water it lasts a fraction of a picosecond. Once collisions have randomized the direction of motion, the mean-squared displacement (MSD) in three dimensions follows the Einstein relation:
+Self-diffusion is the random walk of a molecule through the liquid. Collisions with neighboring molecules keep changing its direction, so the average displacement stays near zero while the mean-squared displacement grows with time. For a brief interval at the start, before those collisions, the molecule is still coasting at its thermal velocity. The distance traveled is then proportional to time, and the mean-squared displacement rises as $\(t^2\)$. That interval is the *ballistic rise*. In liquid water it lasts a fraction of a picosecond. Once collisions have randomized the direction of motion, the mean-squared displacement (MSD) in three dimensions follows the Einstein relation:
 
-\[
+$\[
 \mathrm{MSD}(t) = 6Dt,
-\]
+\]$
 
-where \(D\) in m²/s is \((\mathrm{slope\ in\ Å^2/ps})/6 \times 10^{-8}\). The relation applies only after the ballistic rise, which is why the fits in this report use a later window, 50–200 ps, where the MSD plots are linear. The same slope is calculated for each potential, and those self-diffusion coefficients are then compared with one another and with experiment. The course reference for experiment near room temperature is \(2.299 \times 10^{-9}\) m²/s. 
+where $\(D\)$ in m²/s is $\((\mathrm{slope\ in\ Å^2/ps})/6 \times 10^{-8}\)$. The relation applies only after the ballistic rise, which is why the fits in this report use a later window, 50–200 ps, where the MSD plots are linear. The same slope is calculated for each potential, and those self-diffusion coefficients are then compared with one another and with experiment. The course reference for experiment near room temperature is $\(2.299 \times 10^{-9}\)$ m²/s. 
 
 ## 2. Methods
 
@@ -24,9 +24,9 @@ The comparison uses three classical trajectories, three deep-learning trajectori
 
 Every production run is in the NVT ensemble:
 
-- \(N\) is the number of molecules, held fixed. 
-- \(V\) is the cell volume, also held fixed, so the density does not change. 
-- \(T\) is the temperature, with a target of 300 K.
+- $\(N\)$ is the number of molecules, held fixed. 
+- $\(V\)$ is the cell volume, also held fixed, so the density does not change. 
+- $\(T\)$ is the temperature, with a target of 300 K.
 
 A Nosé–Hoover thermostat enforces that temperature. It assumes that one extra degree of freedom, evolved with the ions, is enough for the ionic positions and momenta to sample the canonical distribution at 300 K. It violates Newton’s second law for an isolated system: the momentum update includes a friction term that is not a force from the interatomic potential, and the physical energy \(K+U\) is not conserved.
 
@@ -59,20 +59,20 @@ The three trajectories share those positions and that cell. They differ in the v
 | Units | real (time in fs, energy in kcal/mol) |
 | Ensemble | Nosé–Hoover, 300 K, damping 100 fs |
 | Timestep | 2.0 fs |
-| Constraints | SHAKE on bonds and angles, tolerance \(10^{-5}\) |
-| Electrostatics | TIP4P long-range solver, M-site offset 0.1546 Å, LJ cutoff 10 Å, PPPM accuracy \(10^{-5}\) |
-| LJ (O–O) | \(\varepsilon = 0.1852\) kcal/mol, \(\sigma = 3.1589\) Å |
-| Geometry | \(r_{\mathrm{OH}} = 0.9572\) Å, angle 104.52°, rigid |
+| Constraints | SHAKE on bonds and angles, tolerance $\(10^{-5}\)$ |
+| Electrostatics | TIP4P long-range solver, M-site offset 0.1546 Å, LJ cutoff 10 Å, PPPM accuracy $\(10^{-5}\)$ |
+| LJ (O–O) | $\(\varepsilon = 0.1852\)$ kcal/mol, $\(\sigma = 3.1589\)$ Å |
+| Geometry | $\(r_{\mathrm{OH}} = 0.9572\)$ Å, angle 104.52°, rigid |
 | Production | 100,000 steps = 200 ps |
 | MSD | oxygen, center-of-mass removed, recorded every 100 steps (0.2 ps) |
 
 The slope is fit from 50 to 200 ps (751 points). The error bar is the sample standard deviation of the three seed values,
 
-\[
+$\[
 s = \sqrt{\frac{1}{2}\sum_{i=1}^{3}(D_i - \bar D)^2}.
-\]
+\]$
 
-A separate check splits 50–200 ps into five 30 ps windows. That window-to-window spread is about \(0.36 \times 10^{-9}\) m²/s. It measures how much one trajectory’s slope moves when the fit interval moves. It is not the error bar reported below. Successive MSD points are correlated, so the error bar is the spread of the three seeds.
+A separate check splits 50–200 ps into five 30 ps windows. That window-to-window spread is about $\(0.36 \times 10^{-9}\)$ m²/s. It measures how much one trajectory’s slope moves when the fit interval moves. It is not the error bar reported below. Successive MSD points are correlated, so the error bar is the spread of the three seeds.
 
 ### 2.2 DeepMD
 
@@ -111,7 +111,7 @@ The first segment starts from the prepared 32-water cell. Each later segment res
 | Cutoff | wavefunction cutoff 60 Ry; SG15 ONCV pseudopotentials |
 | Timestep | 0.5 fs |
 | Thermostat | Nosé–Hoover, 300 K, coupling time 100 fs |
-| Electrons | convergence \(10^{-7}\), charge mixing \(\beta = 0.30\) |
+| Electrons | convergence $\(10^{-7}\)$, charge mixing $\(\beta = 0.30\)$ |
 
 **Table 5.** AIMD segments. Time added is the length of the trajectory written by that segment.
 
@@ -182,21 +182,21 @@ The diffusion coefficient governs how far a water molecule wanders from its star
 
 The classical molecules travel much farther in the same 200 ps. Their final MSD ends near 260–285 Å², and the three seeds give
 
-\[
+$\[
 D_{\mathrm{TIP4P/2005}} = (2.30 \pm 0.12) \times 10^{-9}\ \mathrm{m^2/s}.
-\]
+\]$
 
-That average sits on the experimental room-temperature value, \(2.299 \times 10^{-9}\) m²/s. The DeepMD molecules end near 63–87 Å². The three seeds give
+That average sits on the experimental room-temperature value, $\(2.299 \times 10^{-9}\)$ m²/s. The DeepMD molecules end near 63–87 Å². The three seeds give
 
-\[
+$\[
 D_{\mathrm{DeepMD}} = (0.63 \pm 0.11) \times 10^{-9}\ \mathrm{m^2/s},
-\]
+\]$
 
 about 3.6 times smaller. Seed 3 is the slow one. Its temperature and density in Tables 6 and 7 match the other two seeds, so the low value is a real difference between trajectories, not a run that failed to finish or settled at the wrong temperature. Tables 9 and 10 list the three seeds.
 
 **Table 9.** TIP4P/2005 diffusion coefficients from the 50–200 ps fit.
 
-| Classical trajectory | MSD at 200 ps (Å²) | \(D\) (10⁻⁹ m²/s) |
+| Classical trajectory | MSD at 200 ps (Å²) | $\(D\)$ (10⁻⁹ m²/s) |
 |---|---:|---:|
 | 1 | 259 | 2.16 |
 | 2 | 277 | 2.36 |
@@ -205,7 +205,7 @@ about 3.6 times smaller. Seed 3 is the slow one. Its temperature and density in 
 
 **Table 10.** DeepMD diffusion coefficients from the 50–200 ps fit.
 
-| DeepMD trajectory | MSD at 200 ps (Å²) | \(D\) (10⁻⁹ m²/s) |
+| DeepMD trajectory | MSD at 200 ps (Å²) | $\(D\)$ (10⁻⁹ m²/s) |
 |---|---:|---:|
 | 1 | 83 | 0.67 |
 | 2 | 87 | 0.71 |
@@ -220,23 +220,23 @@ Figure 4 is the check that the numbers in Tables 9 and 10 are fair. In the shade
 
 Figure 5 uses the same axes as the six longer runs in Figure 4: oxygen mean-squared displacement against production time. This production lasts 6.86 ps, so the axis stops at 7 ps. The gray lines are those six trajectories over the same early stretch. Solid gray is TIP4P/2005 and dashed gray is DeepMD.
 
-By 7 ps the classical MD curves have reached about 9–10 Å². The DeepMD curves are near 3–4 Å², and the AIMD curve ends with them, at 3.4 Å². The dark line also wanders, rising and flattening, rather than settling into the straight climb seen later in the 200 ps plots. Figure 6 uses the slope of this curve from 0.5 ps to the end. Splitting the curve into successive pieces moves that slope from about 0.08 to 0.62, in units of \(10^{-9}\) m²/s. That range is drawn as a whisker: a line from the lowest piece-wise slope to the highest, rather than the spread of independent seeds.
+By 7 ps the classical MD curves have reached about 9–10 Å². The DeepMD curves are near 3–4 Å², and the AIMD curve ends with them, at 3.4 Å². The dark line also wanders, rising and flattening, rather than settling into the straight climb seen later in the 200 ps plots. Figure 6 uses the slope of this curve from 0.5 ps to the end. Splitting the curve into successive pieces moves that slope from about 0.08 to 0.62, in units of $\(10^{-9}\)$ m²/s. That range is drawn as a whisker: a line from the lowest piece-wise slope to the highest, rather than the spread of independent seeds.
 
 ![Figure 5. Oxygen mean-squared displacement over the first 7 ps of production. Gray lines are the classical and DeepMD seeds. The dark line is the AIMD run.](aimd_msd_early.png)
 
-Figure 6 puts all three methods next to experiment. For classical MD and DeepMD the bar is the average of the three seeds and the error bar is their spread. The classical MD bar reaches the experimental line. The DeepMD bar does not, and the gap is several times larger than either of those error bars. The AIMD bar is the slope of the one 6.86 ps curve from 0.5 ps to the end, \(0.42 \times 10^{-9}\) m²/s. Its whisker is not a seed spread. It is the range of slopes from three successive pieces of that same curve, about 0.08 to 0.62 in the same units. The bar sits near the DeepMD result, and the whisker is why this short run is not given the same kind of coefficient.
+Figure 6 puts all three methods next to experiment. For classical MD and DeepMD the bar is the average of the three seeds and the error bar is their spread. The classical MD bar reaches the experimental line. The DeepMD bar does not, and the gap is several times larger than either of those error bars. The AIMD bar is the slope of the one 6.86 ps curve from 0.5 ps to the end, $\(0.42 \times 10^{-9}\)$ m²/s. Its whisker is not a seed spread. It is the range of slopes from three successive pieces of that same curve, about 0.08 to 0.62 in the same units. The bar sits near the DeepMD result, and the whisker is why this short run is not given the same kind of coefficient.
 
 ![Figure 6. Diffusion coefficients. Classical MD and DeepMD error bars are the spread of three seeds. The AIMD whisker is the range of slopes along the one 6.86 ps curve.](diffusion_comparison_aimd.png)
 
 ## 5. Literature comparison
 
-**Experiment.** The value used in the Week 8 handout [8] is \(2.299 \times 10^{-9}\) m²/s near 25 °C. That is the standard tracer result for H₂O [1]. These simulations are at 300 K, about 2 K warmer. Water’s diffusion activation energy is roughly 18 kJ/mol, so the experimental coefficient at 300 K is a few percent higher than the 25 °C number. That shift is smaller than the TIP4P/2005 seed error bar and much smaller than the DeepMD gap.
+**Experiment.** The value used in the Week 8 handout [8] is $\(2.299 \times 10^{-9}\)$ m²/s near 25 °C. That is the standard tracer result for H₂O [1]. These simulations are at 300 K, about 2 K warmer. Water’s diffusion activation energy is roughly 18 kJ/mol, so the experimental coefficient at 300 K is a few percent higher than the 25 °C number. That shift is smaller than the TIP4P/2005 seed error bar and much smaller than the DeepMD gap.
 
-**TIP4P/2005.** Abascal and Vega [2] report \(2.08 \times 10^{-9}\) m²/s at 298 K and 1 bar. A later compilation by the same group gives \(2.07 \times 10^{-9}\) m²/s at 298 K. The mean obtained here, \(2.30 \times 10^{-9}\), matches the course experimental reference to 0.1% and sits \(0.22 \times 10^{-9}\) above the published TIP4P/2005 value. The three seeds are 2.16, 2.36, and 2.36. The published number is just below the lowest seed. Differences of this size are expected between a 200 ps NVT run of 512 molecules and the longer runs used to parameterize the model.
+**TIP4P/2005.** Abascal and Vega [2] report $\(2.08 \times 10^{-9}\)$ m²/s at 298 K and 1 bar. A later compilation by the same group gives $\(2.07 \times 10^{-9}\)$ m²/s at 298 K. The mean obtained here, $\(2.30 \times 10^{-9}\)$, matches the course experimental reference to 0.1% and sits $\(0.22 \times 10^{-9}\)$ above the published TIP4P/2005 value. The three seeds are 2.16, 2.36, and 2.36. The published number is just below the lowest seed. Differences of this size are expected between a 200 ps NVT run of 512 molecules and the longer runs used to parameterize the model.
 
-**SCAN and deep potentials trained on SCAN.** The Week 10 model is a SCAN-trained deep potential, and the Week 11 run is SCAN AIMD, so the relevant comparison is SCAN water rather than a generic machine-learning bias. Published SCAN-based models under-diffuse at room temperature. Montero de Hijes, Neubeck, Kresse, and Dellago [5] report \(D = 1.047 \times 10^{-9}\) m²/s at 299 K for a MACE potential trained on SCAN, about half the experimental value, together with a shear viscosity of 2.3 mPa·s against about 0.85 mPa·s experimentally. Direct SCAN AIMD has usually been run at 330 K on heavy water, where the coefficient is about \(1.3 \times 10^{-9}\) m²/s with a trajectory-to-trajectory scatter of order \(0.4 \times 10^{-9}\) [3][4]. Those 330 K D₂O numbers are not a 300 K H₂O benchmark. They do show that a single short AIMD slope is a noisy estimator even at 40–50 ps.
+**SCAN and deep potentials trained on SCAN.** The Week 10 model is a SCAN-trained deep potential, and the Week 11 run is SCAN AIMD, so the relevant comparison is SCAN water rather than a generic machine-learning bias. Published SCAN-based models under-diffuse at room temperature. Montero de Hijes, Neubeck, Kresse, and Dellago [5] report $\(D = 1.047 \times 10^{-9}\)$ m²/s at 299 K for a MACE potential trained on SCAN, about half the experimental value, together with a shear viscosity of 2.3 mPa·s against about 0.85 mPa·s experimentally. Direct SCAN AIMD has usually been run at 330 K on heavy water, where the coefficient is about $\(1.3 \times 10^{-9}\)$ m²/s with a trajectory-to-trajectory scatter of order $\(0.4 \times 10^{-9}\)$ [3][4]. Those 330 K D₂O numbers are not a 300 K H₂O benchmark. They do show that a single short AIMD slope is a noisy estimator even at 40–50 ps.
 
-The DeepMD result here, \(0.63 \times 10^{-9}\) m²/s, is in the same direction as the published SCAN machine-learning result and is lower than that particular 1.05 value. This `graph.pb` is the class model. It is not the MACE model in that paper, and the run is NVT rather than NVE. The factor of about 3.6 between TIP4P/2005 and this DeepMD trajectory is large compared with either seed error bar (0.12 and 0.11). It is a property of this potential at 300 K.
+The DeepMD result here, $\(0.63 \times 10^{-9}\)$ m²/s, is in the same direction as the published SCAN machine-learning result and is lower than that particular 1.05 value. This `graph.pb` is the class model. It is not the MACE model in that paper, and the run is NVT rather than NVE. The factor of about 3.6 between TIP4P/2005 and this DeepMD trajectory is large compared with either seed error bar (0.12 and 0.11). It is a property of this potential at 300 K.
 
 ## 6. Why the three methods differ
 
@@ -256,7 +256,7 @@ These supplementary figures are not used in the sections above.
 
 ![Figure 7. Oxygen–oxygen radial distribution for classical MD seed 1, DeepMD seed 1, and the AIMD chain. The AIMD curve ends at half of its 9.84 Å cell.](goo_comparison.png)
 
-2. **Running slope**, \(d(\mathrm{MSD})/dt\) against time, for all three methods on one axis (Figure 8). The classical slopes settle around the experimental line after a few picoseconds, and the DeepMD slopes settle well below it. The AIMD slope over 7 ps keeps swinging.
+2. **Running slope**, $\(d(\mathrm{MSD})/dt\)$ against time, for all three methods on one axis (Figure 8). The classical slopes settle around the experimental line after a few picoseconds, and the DeepMD slopes settle well below it. The AIMD slope over 7 ps keeps swinging.
 
 ![Figure 8. Running slope of the oxygen mean-squared displacement. Classical MD and DeepMD use a 2 ps window. AIMD uses a 0.5 ps window and ends at 7 ps. The dashed line is the experimental slope.](running_slope.png)
 
@@ -287,7 +287,7 @@ There is no figure for this item. The runs on disk stop at 6.86 ps.
 | TIP4P/2005, published | 2.08 | Abascal and Vega [2], 298 K, 1 bar |
 | SCAN machine-learned, published | 1.05 | Montero de Hijes et al. [5], 299 K; a different model |
 
-TIP4P/2005 reproduces the experimental room-temperature coefficient within the three-seed error bar. The SCAN deep potential diffuses slower by a factor of about 3.6, in the direction expected for classical-nucleus SCAN water, and by more than the published SCAN machine-learning value of about \(1.0 \times 10^{-9}\) m²/s. The AIMD trajectory is equilibrated at 300 K and 1.004 g/cm³. Its bar in Figure 6 is the slope of the 6.86 ps curve, and the wide whisker is the range of slopes along that one run rather than a three-seed error bar. Table 11 collects these values.
+TIP4P/2005 reproduces the experimental room-temperature coefficient within the three-seed error bar. The SCAN deep potential diffuses slower by a factor of about 3.6, in the direction expected for classical-nucleus SCAN water, and by more than the published SCAN machine-learning value of about $\(1.0 \times 10^{-9}\)$ m²/s. The AIMD trajectory is equilibrated at 300 K and 1.004 g/cm³. Its bar in Figure 6 is the slope of the 6.86 ps curve, and the wide whisker is the range of slopes along that one run rather than a three-seed error bar. Table 11 collects these values.
 
 ## References
 
