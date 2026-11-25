@@ -3,6 +3,8 @@
 **MATE 250**  
 **Stephen Reagin**
 
+*AI disclaimer: I did not use AI tools to design or perform any experimental runs in the HPC server, in part because access is gated through a secure shell, and in part because I am still learning the basics of SLURM scripting on my own. However, I did use Cursor AI to help grep values from output files, design plots, and organize the contents of this report. I also took advantage of the AI Research Assistant offered by the SJSU library to find references, using prompts such as: “I want to know what pseudo potentials and other parameters have been used to calculate the ground state and band structure of Germanium crystals in a DFT context.” Any misstatements of fact, whether hallucinated by AI or not, are ultimately my responsibility.*
+
 ## Summary
 
 The band gap of diamond-structure germanium was computed with Quantum ESPRESSO using two pseudopotentials: the SSSP ultrasoft potential assigned for the project and a norm-conserving ONCV potential. Both were carried through cutoff and k-point convergence, a PBE variable-cell relaxation, and a final SCF. The ONCV set was also used for a SCAN meta-GGA calculation on the relaxed structure.
