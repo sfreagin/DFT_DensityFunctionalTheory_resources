@@ -1,0 +1,213 @@
+
+The following have been reloaded with a version change:
+  1) hwloc/2.9.3 => hwloc/2.11.1
+
+Detected GPU: Tesla P100-PCIE-12GB
+Using LAMMPS binary: /app/rl9.x/lammps/20250722/build_p100/lmp_kokkos_p100
+LAMMPS (22 Jul 2025 - Update 4)
+  using 2 OpenMP thread(s) per MPI task
+Reading data file ...
+  orthogonal box = (-6.2 -6.2 -6.2) to (18.6 18.6 18.6)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  1536 atoms
+  reading velocities ...
+  1536 velocities
+  scanning bonds ...
+  2 = max bonds/atom
+  scanning angles ...
+  1 = max angles/atom
+  orthogonal box = (-6.2 -6.2 -6.2) to (18.6 18.6 18.6)
+  1 by 1 by 1 MPI processor grid
+  reading bonds ...
+  1024 bonds
+  reading angles ...
+  512 angles
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        0        0       
+  special bond factors coul:  0        0        0       
+     2 = max # of 1-2 neighbors
+     1 = max # of 1-3 neighbors
+     1 = max # of 1-4 neighbors
+     2 = max # of special neighbors
+  special bonds CPU = 0.001 seconds
+  read_data CPU = 0.051 seconds
+Finding SHAKE clusters ...
+       0 = # of size 2 clusters
+       0 = # of size 3 clusters
+       0 = # of size 4 clusters
+     512 = # of frozen angles
+  find clusters CPU = 0.001 seconds
+PPPM initialization ...
+  extracting TIP4P info from pair style
+  using 12-bit tables for long-range coulomb
+  G vector (1/distance) = 0.31276867
+  grid = 24 24 24
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.0032923493
+  estimated relative force accuracy = 9.9148122e-06
+  using double precision KISS FFT
+  3d grid and FFT values/proc = 29791 13824
+WARNING: Communication cutoff 0 is shorter than a bond length based estimate of 3.4358. This may lead to errors. (src/comm.cpp:743)
+WARNING: Increasing communication cutoff to 13.1118 for TIP4P pair style (src/KSPACE/pair_lj_cut_tip4p_long.cpp:497)
+Generated 1 of 1 mixed pair_coeff terms from geometric mixing rule
+WARNING: Using fix shake with minimization.
+  Substituting constraints with harmonic restraint forces using kbond=1987206.7 (src/RIGID/fix_shake.cpp:385)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 12.3092
+  ghost atom cutoff = 13.1118
+  binsize = 6.1546, bins = 5 5 5
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut/tip4p/long, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Setting up cg style minimization ...
+  Unit style    : real
+  Current step  : 0
+Per MPI rank memory allocation (min/avg/max) = 15.54 | 15.54 | 15.54 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   296.89298     -5841.3609      0             -4936.0224      27691.619    
+         1   296.89298     -5841.6068      0             -4936.0384     -7756.2703    
+Loop time of 0.440924 on 2 procs for 1 steps with 1536 atoms
+
+99.5% CPU use with 1 MPI tasks x 2 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+     -5841.35850749143  -5841.35850749143  -5841.37455450945
+  Force two-norm initial, final = 943.94199 1520.8169
+  Force max component initial, final = 73.68317 126.95074
+  Final line search alpha, max atom move = 4.2411313e-05 0.0053841478
+  Iterations, force evaluations = 1 9
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.33502    | 0.33502    | 0.33502    |   0.0 | 75.98
+Bond    | 4.984e-06  | 4.984e-06  | 4.984e-06  |   0.0 |  0.00
+Kspace  | 0.09769    | 0.09769    | 0.09769    |   0.0 | 22.16
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0010118  | 0.0010118  | 0.0010118  |   0.0 |  0.23
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0.0067527  | 0.0067527  | 0.0067527  |   0.0 |  1.53
+Other   |            | 0.0004471  |            |       |  0.10
+
+Nlocal:           1536 ave        1536 max        1536 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11780 ave       11780 max       11780 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         603436 ave      603436 max      603436 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 603436
+Ave neighs/atom = 392.86198
+Ave special neighs/atom = 2
+Neighbor list builds = 0
+Dangerous builds = 0
+PPPM initialization ...
+  extracting TIP4P info from pair style
+  using 12-bit tables for long-range coulomb
+  G vector (1/distance) = 0.31276867
+  grid = 24 24 24
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.0032923493
+  estimated relative force accuracy = 9.9148122e-06
+  using double precision KISS FFT
+  3d grid and FFT values/proc = 29791 13824
+Generated 1 of 1 mixed pair_coeff terms from geometric mixing rule
+Setting up Verlet run ...
+  Unit style    : real
+  Current step  : 0
+  Time step     : 2
+Per MPI rank memory allocation (min/avg/max) = 14.41 | 14.41 | 14.41 Mbytes
+   Step          Time           Temp          PotEng         KinEng         TotEng         Press         Density    
+         0   0              300           -5841.6068      914.8106      -4926.7962      2108.9819      1.0041715    
+       100   200            286.5765      -5955.0183      873.87741     -5081.1409      1283.4949      1.0041715    
+       200   400            295.33411     -5827.7024      900.58257     -4927.1198      864.75835      1.0041715    
+       300   600            301.62958     -5780.6852      919.77978     -4860.9054      477.42152      1.0041715    
+       400   800            294.97713     -5756.5562      899.49402     -4857.0622      659.86245      1.0041715    
+       500   1000           297.58658     -5828.1977      907.45118     -4920.7465      292.71641      1.0041715    
+       600   1200           305.78475     -5778.3274      932.45045     -4845.8769      635.52493      1.0041715    
+       700   1400           304.0561      -5783.6719      927.17913     -4856.4928      500.70377      1.0041715    
+       800   1600           289.12105     -5766.8574      881.63668     -4885.2207     -832.41171      1.0041715    
+       900   1800           310.37627     -5730.7614      946.45169     -4784.3097     -1173.6578      1.0041715    
+      1000   2000           300.2963      -5782.2971      915.71414     -4866.583       747.08432      1.0041715    
+      1100   2200           298.57465     -5789.5601      910.46417     -4879.0959      528.74156      1.0041715    
+      1200   2400           292.96427     -5766.0164      893.35606     -4872.6603      504.50731      1.0041715    
+      1300   2600           294.30199     -5838.2714      897.43526     -4940.8361      1014.2155      1.0041715    
+      1400   2800           298.18939     -5807.5883      909.2894      -4898.2989      717.45869      1.0041715    
+      1500   3000           307.35351     -5812.3213      937.23417     -4875.0871      672.00948      1.0041715    
+      1600   3200           289.62117     -5774.6653      883.16172     -4891.5036      510.35794      1.0041715    
+      1700   3400           295.56401     -5792.3576      901.28364     -4891.0739      610.98003      1.0041715    
+      1800   3600           296.89311     -5804.6013      905.33655     -4899.2647      302.32433      1.0041715    
+      1900   3800           300.43088     -5821.7644      916.12453     -4905.6399      281.78768      1.0041715    
+      2000   4000           304.5199      -5759.8604      928.59346     -4831.267       253.7219       1.0041715    
+      2100   4200           294.72088     -5745.8436      898.71264     -4847.1309     -526.13642      1.0041715    
+      2200   4400           292.84521     -5825.2612      892.99302     -4932.2682     -76.287311      1.0041715    
+      2300   4600           296.42218     -5830.9465      903.90052     -4927.046       229.26841      1.0041715    
+      2400   4800           303.97111     -5770.6687      926.91998     -4843.7488      933.02539      1.0041715    
+      2500   5000           310.58352     -5794.8289      947.08366     -4847.7452     -273.51032      1.0041715    
+      2600   5200           293.98697     -5810.6586      896.47466     -4914.184      -559.54973      1.0041715    
+      2700   5400           307.94588     -5796.9323      939.04052     -4857.8918      130.54577      1.0041715    
+      2800   5600           304.36732     -5796.8741      928.12817     -4868.746      -342.35666      1.0041715    
+      2900   5800           295.32096     -5705.1886      900.54248     -4804.6461     -59.334242      1.0041715    
+      3000   6000           292.59027     -5740.8199      892.21559     -4848.6043      335.61222      1.0041715    
+      3100   6200           291.25194     -5753.6082      888.13455     -4865.4736     -114.61293      1.0041715    
+      3200   6400           315.3931      -5767.9625      961.74985     -4806.2127      594.67345      1.0041715    
+      3300   6600           305.53717     -5760.1075      931.69547     -4828.4121     -87.516765      1.0041715    
+      3400   6800           295.85626     -5801.1405      902.17481     -4898.9656      275.98666      1.0041715    
+      3500   7000           292.41876     -5770.6151      891.69262     -4878.9224      166.64586      1.0041715    
+      3600   7200           307.04321     -5742.8884      936.28795     -4806.6004     -118.89577      1.0041715    
+      3700   7400           299.92965     -5817.4167      914.59608     -4902.8206      1146.7912      1.0041715    
+      3800   7600           291.71317     -5823.2133      889.541       -4933.6723      974.29971      1.0041715    
+      3900   7800           305.40637     -5789.4847      931.29662     -4858.188      -134.07037      1.0041715    
+      4000   8000           298.59628     -5775.488       910.53016     -4864.9578      338.64063      1.0041715    
+      4100   8200           289.97287     -5811.9293      884.2342      -4927.6951     -769.48094      1.0041715    
+      4200   8400           283.36113     -5838.7766      864.07256     -4974.704       2.3315354      1.0041715    
+      4300   8600           298.59998     -5823.0988      910.54142     -4912.5574      620.18865      1.0041715    
+      4400   8800           289.08606     -5827.1508      881.52997     -4945.6209     -250.1402       1.0041715    
+      4500   9000           302.14857     -5806.1296      921.36238     -4884.7672      1303.9576      1.0041715    
+      4600   9200           293.78851     -5806.5809      895.8695      -4910.7114     -89.791272      1.0041715    
+      4700   9400           305.29427     -5756.1932      930.95479     -4825.2384      444.77192      1.0041715    
+      4800   9600           296.48734     -5791.7099      904.09921     -4887.6107     -15.117673      1.0041715    
+      4900   9800           301.89685     -5810.5684      920.5948      -4889.9736      444.85158      1.0041715    
+      5000   10000          306.68074     -5779.5829      935.18263     -4844.4003     -101.14213      1.0041715    
+Loop time of 201.65 on 2 procs for 5000 steps with 1536 atoms
+
+Performance: 4.285 ns/day, 5.601 hours/ns, 24.795 timesteps/s, 38.086 katom-step/s
+99.4% CPU use with 1 MPI tasks x 2 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 138.65     | 138.65     | 138.65     |   0.0 | 68.76
+Bond    | 0.0013562  | 0.0013562  | 0.0013562  |   0.0 |  0.00
+Kspace  | 48.47      | 48.47      | 48.47      |   0.0 | 24.04
+Neigh   | 11.865     | 11.865     | 11.865     |   0.0 |  5.88
+Comm    | 0.67738    | 0.67738    | 0.67738    |   0.0 |  0.34
+Output  | 0.0016658  | 0.0016658  | 0.0016658  |   0.0 |  0.00
+Modify  | 1.85       | 1.85       | 1.85       |   0.0 |  0.92
+Other   |            | 0.134      |            |       |  0.07
+
+Nlocal:           1536 ave        1536 max        1536 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11854 ave       11854 max       11854 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         603430 ave      603430 max      603430 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 603430
+Ave neighs/atom = 392.85807
+Ave special neighs/atom = 2
+Neighbor list builds = 407
+Dangerous builds = 0
+System init for write_data ...
+PPPM initialization ...
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd-g8: error: *** JOB 93033 ON g8 CANCELLED AT 2026-10-20T19:51:15 ***
+slurmstepd-g8: error: *** STEP 93033.0 ON g8 CANCELLED AT 2026-10-20T19:51:15 ***

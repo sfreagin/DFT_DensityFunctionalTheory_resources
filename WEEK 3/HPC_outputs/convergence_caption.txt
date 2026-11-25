@@ -1,0 +1,19 @@
+Convergence criterion
+---------------------
+I used ?E ? 1ª10?³ eV/atom, where ?E is the change in total energy per atom
+between successive parameter values (2-atom Si cell; 1 Ry = 13.6057 eV).
+
+Chosen parameters for subsequent calculations
+---------------------------------------------
+• ecutwfc = 32 Ry (with ecutrho = 128 Ry)
+  Justification: |E(32) ? E(28)| ? 3.4ª10?? eV/atom, which meets the criterion.
+  The previous step (24 ? 28 Ry) was still above 1 meV/atom.
+
+• k-point mesh = 12ª12ª12 (Monkhorst–Pack, unshifted), with ecutwfc fixed at 32 Ry
+  Justification: |E(12) ? E(10)| ? 2.9ª10?? eV/atom, which meets the criterion.
+  The previous step (8 ? 10) was still slightly above 1 meV/atom.
+
+Figures
+-------
+• ecut_convergence.png — total energy vs ecutwfc; red dashed line marks 32 Ry
+• k_points/k_convergence.png — total energy vs N (NªNªN mesh); red dashed line marks 12

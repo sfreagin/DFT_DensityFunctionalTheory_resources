@@ -1,0 +1,2 @@
+Failed to execute command: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+srun: error: g4: task 0: Exited with exit code 1

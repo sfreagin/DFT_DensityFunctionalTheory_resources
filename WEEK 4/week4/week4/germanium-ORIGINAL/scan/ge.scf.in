@@ -1,0 +1,31 @@
+&control
+  calculation = 'scf',
+  prefix = 'ge',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/sg15_oncv'
+  outdir = './Ge_out/'
+  !nstep=50
+/
+&system
+  ibrav = 0,
+  nat = 8, ntyp = 1,
+  ecutwfc = 40.0,
+  nbnd=20 ! to enable energy output for both highest occupied, and lowest unoccupied values
+  input_dft='scan'
+/
+&electrons
+  conv_thr = 1.0d-8,
+/
+&ions
+/
+&cell
+ !cell_dofree='xyz'
+/
+ATOMIC_SPECIES
+ Ge  28.086 Ge_ONCV_PBE-1.2.upf 
+CELL_PARAMETERS {angstrom}
+ ! fill in your PBE optimized lattice parameters here 
+ATOMIC_POSITIONS {crystal}
+ ! fill in your PBE optimized coordinates here
+K_POINTS automatic
+ 10 10 10 0 0 0
+

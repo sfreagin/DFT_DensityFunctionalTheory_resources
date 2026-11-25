@@ -1,0 +1,32 @@
+&control
+  calculation = 'scf',
+  prefix = 'si',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/'
+  outdir = './Si_out/',
+/
+&system
+  ibrav = 2, celldm(1) = 10.2, nat = 2, ntyp = 1,
+  ecutwfc = 32, ecutrho =128
+/
+&electrons
+  conv_thr = 1.0d-8,
+  electron_maxstep = 500
+  mixing_beta = 0.3D0
+ !startingpot='file'
+ !startingwfc='file'
+ !mixing_mode='local-TF'
+ !mixing_fixed_ns=3
+/
+&ions
+ !upscale=20
+/
+&cell
+ !cell_dofree='xyz'
+/
+ATOMIC_SPECIES
+ Si  28.086 Si.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS
+ Si 0.00 0.00 0.00
+ Si 0.25 0.25 0.25
+K_POINTS automatic
+ 4 4 4 0 0 0

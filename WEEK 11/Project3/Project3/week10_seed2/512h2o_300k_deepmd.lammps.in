@@ -1,0 +1,43 @@
+units           metal
+atom_style      atomic
+boundary        p p p
+
+read_data       water512_dp_equilibrated.data 
+
+mass            1 15.9994
+mass            2 1.008
+
+pair_style      deepmd graph.pb
+pair_coeff      * * O H
+
+neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check yes
+
+# metal units: 0.0005 ps = 0.5 fs, small enough to resolve O-H vibrations
+timestep        0.0005
+velocity        all create 300.0 12345678 mom yes rot yes dist gaussian
+fix             thermostat all nvt temp 300.0 300.0 0.10
+
+thermo          100
+thermo_style    custom step time temp pe ke etotal press density
+
+# 10 ps equilibration
+run             20000
+
+write_data      water512_deepmd_equilibrated.data
+write_restart   water512_deepmd_equilibrated.restart
+
+group           oxygen type 1
+compute         msdO oxygen msd com yes
+fix             msdout all ave/time 200 1 200 c_msdO[4] file msd_O.dat
+
+# one trajectory frame every 1 ps (2000 steps x 0.0005 ps)
+dump            traj all custom 2000 deepmd_water.lammpstrj id type x y z
+dump_modify     traj sort id
+
+thermo_style    custom step time temp pe ke etotal press density c_msdO[4]
+
+# 200 ps production
+run             400000
+
+write_data      water512_deepmd_final.data

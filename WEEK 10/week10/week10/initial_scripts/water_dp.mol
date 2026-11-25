@@ -1,0 +1,15 @@
+# Flexible H2O molecule for Deep Potential
+
+3 atoms
+
+Coords
+
+1   0.00000   0.00000   0.00000
+2   0.75695   0.58588   0.00000
+3  -0.75695   0.58588   0.00000
+
+Types
+
+1   1   # O
+2   2   # H
+3   2   # H

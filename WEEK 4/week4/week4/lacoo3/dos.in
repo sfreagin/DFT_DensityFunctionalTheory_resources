@@ -1,0 +1,7 @@
+&DOS
+  prefix='lacoo3',
+  outdir='lacoo3_rhomb',  !the folder dir and name where you saved the wavefunction
+  fildos='dos.dat',
+  emin=-9.0, !change this energy range as needed
+  emax=16.0  !change this energy range as needed
+/

@@ -1,0 +1,32 @@
+&control
+  calculation = 'scf',
+  prefix = 'nh3',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/SSSP_1.3.0_PBE_efficiency/'
+  outdir = './nh3_out/'
+  forc_conv_thr=1.0D-5
+/
+&system
+  ibrav = 0,
+  nat = 4, ntyp = 2,
+  ecutwfc = 80, ecutrho=320
+/
+&electrons
+  conv_thr = 1.0d-8,
+/
+&ions
+/
+ATOMIC_SPECIES
+ H  1.008 H.pbe-rrkjus_psl.1.0.0.UPF
+ N  14.007 N.pbe-n-radius_5.UPF 
+CELL_PARAMETERS {angstrom}
+  15.0   0.000000000    0.000000000000000
+  0.0000000    15.0    0.0000000000000000
+   0.0000000000000000    0.0000000000000000    15.0
+ATOMIC_POSITIONS {crystal} 
+ N 0.5 0.5   0.5
+ H 0.5 0.437486667 0.47456
+ H 0.55414 0.53126 0.47456
+ H 0.44586 0.53126 0.47456
+ ! NH3 values from NIST: https://cccbdb.nist.gov/expgeom2x.asp?casno=7664417&charge=0
+K_POINTS automatic
+ 1 1 1 0 0 0

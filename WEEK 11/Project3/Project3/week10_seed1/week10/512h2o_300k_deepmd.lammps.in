@@ -1,0 +1,31 @@
+units           metal
+atom_style      atomic
+boundary        p p p
+
+read_data       512h2o_300k_deepmd.lammps.in 
+
+mass            1 15.9994
+mass            2 1.008
+
+pair_style      deepmd graph.pb
+pair_coeff      * * O H
+
+neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check yes
+
+timestep        0.0005
+velocity        all create 300.0 23456789 mom yes rot yes dist gaussian
+fix             thermostat all nvt temp 300.0 300.0 0.10
+
+thermo          100
+thermo_style    custom step time temp pe ke etotal press vol
+
+# 10 ps equilibration
+run             20000
+
+reset_timestep  0
+group           oxygen type 1
+compute         msdO oxygen msd com yes
+
+# 20 ps production
+run             40000

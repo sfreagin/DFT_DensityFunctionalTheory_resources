@@ -1,0 +1,32 @@
+&control
+  calculation = 'scf',
+  prefix = 'ge',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/SSSP_1.3.0_PBE_efficiency/
+  outdir = './Ge_out/'
+  !nstep=50
+/
+&system
+  ibrav = 0,
+  nat = 8, ntyp = 1,
+  ecutwfc = 40.0,
+  nbnd=20 ! to enable energy output for both highest occupied, and lowest unoccupied values
+  input_dft='hse'
+  nqx1=2, nqx2=2, nqx3=2
+/
+&electrons
+  conv_thr = 1.0d-8,
+/
+&ions
+/
+&cell
+ !cell_dofree='xyz'
+/
+ATOMIC_SPECIES
+ Ge  28.086 ge_pbe_v1.4.uspp.F.UPF 
+CELL_PARAMETERS {angstrom}
+ ! fill in your PBE optimized lattice parameters here 
+ATOMIC_POSITIONS {crystal}
+ ! fill in your PBE optimized coordinates here
+K_POINTS automatic
+ 10 10 10 0 0 0
+

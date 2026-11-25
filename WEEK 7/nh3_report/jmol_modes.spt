@@ -1,0 +1,12 @@
+# anime.xyz_jmol is written in bohr but read as angstrom, so Jmol does not autobond N-H.
+load "anime.xyz_jmol";
+connect (_N) (_H);
+background white;
+spacefill 20%;
+wireframe 0.15;
+vector on;
+vector 0.08;
+color vectors orange;
+vibration scale 1.5;
+frame 7;
+vibration on;

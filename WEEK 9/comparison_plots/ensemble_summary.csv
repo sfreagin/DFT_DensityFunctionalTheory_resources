@@ -1,0 +1,4 @@
+ensemble,mean_T_K,std_T_K,mean_density_g_cm3,std_density,mean_press_atm,mean_Etot_kcal_mol,std_Etot,Etot_drift_kcal_mol_per_ps,fit_start_ps,fit_end_ps,D_m2_s,D_window_sem_m2_s
+NVE,303.76,6.11,1.0042,0.0000,404,-4844.77,0.25,-0.007,2.0,40.0,2.4809e-09,2.52e-10
+NVT,300.41,7.91,1.0042,0.0000,471,-4888.32,46.44,-0.429,2.0,40.0,2.1116e-09,1.30e-10
+NPT,301.18,7.77,0.9845,0.0100,-22,-4873.33,45.18,0.050,2.0,40.0,2.2400e-09,2.85e-10

@@ -1,0 +1,37 @@
+&control
+  calculation = 'scf',
+  prefix = 'ge',
+  pseudo_dir = './pseudopotentials/' !define the path to the pseduopotential file
+  outdir = './ge_out/'
+  etot_conv_thr=1D-4 !this is the command to set the convergence threshold on total energy for ionic minimization
+  forc_conv_thr=1D-4 !this is the command to set the convergence threshold on total force for ionic minimization
+/
+&system
+  ibrav = 0,
+  nat = 8, ntyp = 1,
+  ecutwfc = 32, ecutrho=256
+  nbnd=20
+/
+&electrons
+  conv_thr = 1.0d-8,
+/
+ATOMIC_SPECIES
+ ! DONE - provide element information here, e.g.: Si  28.086 Si.pbe-n-kjpaw_psl.1.0.0.UPF
+ Ge 72.63 ge_pbe_v1.4.uspp.F.UPF
+CELL_PARAMETERS {angstrom}
+ ! DONE - update the lattice parameters here from Materials project for fcc germanium
+   5.6748542148543777    0.0000000000000000    0.0000000000000003
+   0.0000000000000009    5.6748542148543777    0.0000000000000003
+   0.0000000000000000    0.0000000000000000    5.6748542148543777
+ATOMIC_POSITIONS {crystal}
+ ! DONE? - update the element symbol (no need to change the fractional coordinates, why?)
+   0.0000000000000000    0.0000000000000000    0.5000000000000000 Ge0+
+   0.2500000000000000    0.2500000000000000    0.7500000000000000 Ge0+
+   0.0000000000000000    0.5000000000000000    0.0000000000000000 Ge0+
+   0.2500000000000000    0.7500000000000000    0.2500000000000000 Ge0+
+   0.5000000000000000    0.0000000000000000    0.0000000000000000 Ge0+
+   0.7500000000000000    0.2500000000000000    0.2500000000000000 Ge0+
+   0.5000000000000000    0.5000000000000000    0.5000000000000000 Ge0+
+   0.7500000000000000    0.7500000000000000    0.7500000000000000 Ge0+
+K_POINTS automatic
+ 4 4 4 0 0 0

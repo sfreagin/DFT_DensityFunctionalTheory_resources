@@ -1,0 +1,31 @@
+&control
+  calculation = 'relax',
+  prefix = 'h2o',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/SSSP_1.3.0_PBE_efficiency/'
+  outdir = './h2o_out/'
+  forc_conv_thr=1.0D-5
+/
+&system
+  ibrav = 0,
+  nat = 3, ntyp = 2,
+  ecutwfc = 60.0,
+/
+&electrons
+  conv_thr = 1.0d-8,
+/
+&ions
+/
+ATOMIC_SPECIES
+ H  1.008 H.pbe-rrkjus_psl.1.0.0.UPF
+ O  15.999 O.pbe-n-kjpaw_psl.0.1.UPF 
+CELL_PARAMETERS {angstrom}
+  8.0   0.000000000    0.000000000000000
+  0.0000000    8.0    0.0000000000000000
+   0.0000000000000000    0.0000000000000000    8.0
+ATOMIC_POSITIONS {crystal}
+ O  0.3750000   0.3750000   0.3750000
+ H  0.4497800   0.4704162   0.3750000
+ H  0.4497800   0.2795838   0.3750000
+K_POINTS automatic
+ 1 1 1 0 0 0
+

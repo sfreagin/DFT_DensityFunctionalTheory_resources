@@ -1,0 +1,16 @@
+&control
+  calculation = 'scf',
+  prefix = 'h2o',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/SSSP_1.3.0_PBE_efficiency/'
+  outdir = './h2o_out/'
+  tprnfor=.TRUE.
+/
+&system
+  ibrav = 0,
+  nat = 3, ntyp = 2,
+  ecutwfc = 60.0,
+/
+&electrons
+  conv_thr = 1.0d-8,
+/
+

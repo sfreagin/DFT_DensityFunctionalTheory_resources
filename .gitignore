@@ -1,0 +1,72 @@
+# Portfolio snapshot of MATE 250. The working folders stay on disk.
+# Git tracks inputs, scripts, plots, structures, and writeups.
+# Regenerable run files stay local so the repo stays under GitHub's
+# 100 MB file limit and 2 GB push limit.
+
+# --- not part of this portfolio ---
+.DS_Store
+.tmp_phonopy/
+/Textbooks/
+/1 - All lectures/
+/2 - HTML files/
+/3 - Homework files/
+/4 - Readings/
+/Group_Project/
+/*.pdf
+
+# --- junk and caches ---
+**/__pycache__/
+**/.ipynb_checkpoints/
+~$*
+*.pyc
+
+# Third-party Jmol install (week 5). Install Jmol separately if needed.
+**/jmol-*/
+
+# Instructor slides, textbook excerpts, and the Rev. Mod. Phys. reprint.
+# These stay in the local course folder.
+**/Materials_Modelling*.pdf
+**/RevModPhys*.pdf
+**/Lagrangian_Equation.pdf
+**/week1_introduction.pptx
+**/week2_DFT_introduction.pdf
+**/week3_practical_consideration_DFT.pdf
+**/week5_vibraional_spectroscopy.pptx
+**/week6_IR_calculation*.pdf
+**/week8_molecular*.pdf
+**/week9_molecular*.pdf
+**/week10_molecular*.pdf
+**/week11_molecular*.pdf
+**/week13_defects.pdf
+**/*tutorial*.html
+**/*hands_on*.html
+**/week4_project.html
+**/week7_project_IR.html
+**/week_3_tutorial.html
+*.pptx
+
+# --- regenerable Quantum ESPRESSO / Phonopy / LAMMPS / DeePMD files ---
+# Wavefunctions, charge densities, phonon scratch, trajectories,
+# pseudopotentials, and trained network weights.
+*.save/
+*.wfc[0-9]*
+*.oldwfc*
+*.old2wfc*
+*.mix1
+
+# Local plotting environment, not project code.
+**/.venv*/
+**/.venv_plot/
+*.mixd*
+*.prd*
+*.recover
+*.ebar*
+*.dwf*
+*.com1
+*.mdtrj
+*.lammpstrj
+*.upf
+*.UPF
+*.pb
+**/32h2o_qe.out
+**/data-file-schema.xml

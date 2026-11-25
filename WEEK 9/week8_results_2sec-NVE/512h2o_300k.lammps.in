@@ -1,0 +1,25 @@
+# 512 H2O, TIP4P/2005, ensemble branch from 2 fs equilibrated restart
+
+read_restart    water512_new_equilibration.restart
+kspace_style    pppm/tip4p 1.0e-5
+
+fix             constraints all shake 1.0e-5 100 0 b 1 a 1
+timestep        2.0
+reset_timestep  0
+
+# ---- ensemble ----
+fix            integrator all nve
+
+group           oxygen type 1
+compute         msdO oxygen msd com yes
+fix             msdout all ave/time 100 1 100 c_msdO[4] file msd_NVT.dat
+
+dump            traj all custom 1000 water512_NVT.lammpstrj id mol type x y z
+dump_modify     traj sort id
+
+thermo          100
+thermo_style    custom step time temp pe ke etotal press vol density c_msdO[4]
+
+# 50 ps production: 25000 steps x 2 fs
+run             25000
+write_data      water512_NVT_final.data

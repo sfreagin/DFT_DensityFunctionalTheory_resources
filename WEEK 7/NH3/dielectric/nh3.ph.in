@@ -1,0 +1,12 @@
+&inputph
+  tr2_ph=1.0d-14,
+  prefix='nh3',
+  amass(1)=1.008,
+  amass(2)=14.007,
+  outdir='nh3_out'
+  epsil=.true.,   !to calculate dielectric constant
+  trans=.false.,
+  asr=.true.
+  fildyn='dmat.nh3'
+ /
+ 0.0 0.0 0.0

@@ -1,0 +1,6 @@
+Project 3: diffusion coefficient of H2O molecules from MD simulations. Run
+
+3 independent trajectories using classical force field MD simulations (30 pts)
+3 independent trajectories using deep MD simulations (30 pts)
+an AIMD run together with thermodynamic equilibration check for this run (20 pts)
+Obtain the diffusion coefficient of water with an error bar from the three trajectories in the above three cases and compare the difference between them, compare to literature values and explain the results. (20 pts)

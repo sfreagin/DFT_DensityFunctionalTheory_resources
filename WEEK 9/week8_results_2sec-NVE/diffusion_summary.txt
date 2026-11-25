@@ -1,0 +1,31 @@
+MSD diffusion analysis
+============================================================
+Input file                  : msd_NVE.dat
+MD timestep                 : 2 fs
+Fit interval                : 2 to 40 ps
+Number of fit points        : 191
+
+MSD slope                   : 1.4885679 A^2/ps
+Fit R^2                     : 0.996019
+D                           : 0.24809464 A^2/ps
+D                           : 2.4809464e-09 m^2/s
+D                           : 2.48095 x 10^-9 m^2/s
+
+Reference D                 : 2.299e-09 m^2/s
+Signed percent difference   : 7.914 %
+Absolute percent difference : 7.914 %
+
+Window/bin sensitivity analysis
+------------------------------------------------------------
+Requested windows           : 5
+Usable windows              : 5
+Mean D across windows       : 2.33879 x 10^-9 m^2/s
+Std. dev. across windows    : 0.56449 x 10^-9 m^2/s
+SEM across windows          : 0.25245 x 10^-9 m^2/s
+
+Interpretation
+------------------------------------------------------------
+Use only a time region where MSD is approximately linear. Do not fit the very early ballistic regime.
+Changing the fit interval is a useful way to see whether the reported diffusion coefficient is stable.
+The subwindow spread is a pedagogical uncertainty estimate. MSD points are strongly correlated, so ordinary least-squares fit errors should not be interpreted as rigorous statistical uncertainty.
+For publication-quality uncertainty, use multiple time origins and/or several statistically independent trajectories.

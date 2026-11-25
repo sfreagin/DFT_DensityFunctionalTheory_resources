@@ -1,0 +1,79 @@
+# ============================================================
+# 512 H2O molecules, TIP4P/2005, NVT at 300 K
+# Implicit M-site implementation
+# ============================================================
+
+units           real
+atom_style      full
+boundary        p p p
+
+# ------------------------------------------------------------
+# TIP4P/2005 intermolecular interactions
+# ------------------------------------------------------------
+
+pair_style      lj/cut/tip4p/long 1 2 1 1 0.1546 10.0
+bond_style      zero
+angle_style     zero
+
+read_data water512_equilibrated.data
+
+kspace_style    pppm/tip4p 1.0e-5
+
+
+# Useful/required for KOKKOS PPPM/TIP4P
+newton          on
+
+# ------------------------------------------------------------
+# SHAKE constraints
+# ------------------------------------------------------------
+
+fix             constraints all shake 1.0e-5 100 0 b 1 a 1
+
+# Relax bad intermolecular contacts introduced by random packing
+minimize        1.0e-4 1.0e-4 5000 50000
+
+# ------------------------------------------------------------
+# MD setup
+# ------------------------------------------------------------
+
+reset_timestep  0
+timestep        4.0
+
+velocity        all create 300.0 4928459 mom yes rot yes dist gaussian
+
+fix             thermostat all nvt temp 300.0 300.0 100.0
+
+thermo          100
+thermo_style    custom step time temp pe ke etotal press density
+
+# ------------------------------------------------------------
+# Equilibration: 10 ps
+# 2500 steps x 4 fs = 10000 fs = 10 ps
+# ------------------------------------------------------------
+
+run             2500
+write_data      water512_new_equilibration.data
+write_restart water512_new_equilibration.restart
+# ------------------------------------------------------------
+# Production: diffusion calculation
+# ------------------------------------------------------------
+
+#reset_timestep  0
+
+group           oxygen type 1
+
+compute         msdO oxygen msd com yes
+
+# Save total oxygen MSD every 100 steps = every 0.2 ps
+fix             msdout all ave/time 100 1 100 c_msdO[4] file msd_O_512.dat
+
+dump traj all custom 1000 water512_4sec.lammpstrj id mol type x y z
+dump_modify traj sort id
+
+# Optional: include MSD directly in log output
+thermo_style    custom step time temp pe ke etotal press density c_msdO[4]
+
+# 20 ps production
+# 5000 steps x 4 fs = 20 ps
+run             5000
+write_data    water512_final.data

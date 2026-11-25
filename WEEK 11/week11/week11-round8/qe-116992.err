@@ -1,0 +1,3 @@
+Loading Quantum ESPRESSO 7.5.1 ...
+Selected QE variant: gpu
+slurmstepd-g23: error: *** JOB 116992 ON g23 CANCELLED AT 2026-11-16T19:34:40 DUE TO TIME LIMIT ***

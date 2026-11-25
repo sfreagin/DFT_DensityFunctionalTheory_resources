@@ -1,0 +1,54 @@
+&control
+  calculation = 'vc-relax',
+  prefix = 'lacoo3',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/pslibrary/.'
+  outdir = './lacoo3_rhomb/'
+  nstep=50
+  !disk_io='low'
+  !max_seconds=10800
+  !restart_mode='restart'
+/
+&system
+  ibrav = 0,
+  nat = 10, ntyp = 3,
+  ecutwfc = 90.0, ecutrho =720,
+  occupations='smearing',smearing='gauss', degauss=0.0037
+  nspin=2
+  starting_magnetization(2)=0.01
+/
+&electrons
+  conv_thr = 1.0d-5,
+  electron_maxstep = 400
+  mixing_beta = 0.1D0
+  !startingpot='file'
+  !startingwfc='file'
+/
+&ions
+/
+&cell
+ cell_dofree='all'
+/
+ATOMIC_SPECIES
+ La 138.9055 La.pbe-spfn-kjpaw_psl.1.0.0.UPF
+ Co 58.9332 Co.pbe-spn-kjpaw_psl.0.3.1.UPF
+ O  16 O.pbe-n-kjpaw_psl.1.0.0.UPF
+CELL_PARAMETERS {angstrom}
+  5.3747820854         0.0000000000         0.0000000000
+  2.5749825819         4.7178116928         0.0000000000
+  2.5749825819         1.5281311387         4.4634697705
+ATOMIC_POSITIONS {crystal}
+  La   0.250000000         0.250000000         0.250000000
+  La   0.750000000         0.750000000         0.750000000
+  Co   0.500000000         0.500000000         0.500000000
+  Co   0.000000000         0.000000000         0.000000000
+  O   0.750000000         0.187185000         0.312815000
+  O   0.312815000         0.750000000         0.187185000
+  O   0.812815000         0.687185000         0.250000000
+  O   0.187185000         0.312815000         0.750000000
+  O   0.687185000         0.250000000         0.812815000
+  O   0.250000000         0.812815000         0.687185000
+K_POINTS automatic
+  6 6 6 0 0 0
+HUBBARD (ortho-atomic)
+U Co-3d 3.0
+

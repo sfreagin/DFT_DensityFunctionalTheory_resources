@@ -1,0 +1,16 @@
+&control
+  calculation = 'scf',
+  prefix = 'nh3',
+  pseudo_dir = '/scratch/mate250-fa26/pseudos/SSSP_1.3.0_PBE_efficiency/'
+  outdir = './nh3_out/'
+  tprnfor = .TRUE.
+/
+&system
+  ibrav = 0,
+  nat = 4, ntyp = 2,
+  ecutwfc = 70.0,
+/
+&electrons
+  conv_thr = 1.0d-8,
+/
+
