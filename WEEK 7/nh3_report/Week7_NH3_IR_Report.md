@@ -19,7 +19,7 @@ The vibrational modes and infrared spectrum of ammonia were calculated with dens
 | Asymmetric stretch, $\nu_3$ | 3521 cm$^{-1}$ | 3444 cm$^{-1}$ |
 | Strongest IR band | umbrella, 124 km/mol | umbrella, 138 km/mol |
 
-All four fundamentals are IR active, as the C$_{3v}$ symmetry of NH$_3$ requires. Three of the four frequencies agree with experiment to within 2.2%, and the calculated band intensities reproduce the measured ordering and magnitudes to within 16%. The umbrella mode has the largest error, +5.3%, which is consistent with its strongly anharmonic double-well potential.
+All four fundamentals are IR active, as the $C_{3v}$ symmetry of $NH_3$ requires. Three of the four frequencies agree with experiment to within 2.2%, and the calculated band intensities reproduce the measured ordering and magnitudes to within 16%. The umbrella mode has the largest error, +5.3%, which is consistent with its strongly anharmonic double-well potential.
 
 ## 1. Introduction
 
@@ -61,7 +61,7 @@ Because each type of bond absorbs at characteristic frequencies, IR spectroscopy
 
 ### 2.2 Simulation box and initial structure
 
-The molecule was placed in a 15 &Aring; cubic box, with N at the box center and the C$_3$ axis along $z$. The molecule is about 1.6 &Aring; across, so periodic images are separated by more than 13 &Aring; of vacuum. The initial geometry is the experimental structure tabulated by NIST (Herzberg: $r_{\mathrm{NH}}$ = 1.012 &Aring;, $\angle$HNH = 106.67&deg;). Its Cartesian coordinates were shifted by half the box length and divided by 15 &Aring; to give fractional coordinates:
+The molecule was placed in a 15 &Aring; cubic box, with N at the box center and the $C_3$ axis along $z$. The molecule is about 1.6 &Aring; across, so periodic images are separated by more than 13 &Aring; of vacuum. The initial geometry is the experimental structure tabulated by NIST (Herzberg: $r_{\mathrm{NH}}$ = 1.012 &Aring;, $\angle HNH = 106.67&deg;)$. Its Cartesian coordinates were shifted by half the box length and divided by 15 &Aring; to give fractional coordinates:
 
 | Atom | $x$ | $y$ | $z$ |
 | --- | ---: | ---: | ---: |
@@ -107,7 +107,7 @@ The first `ph.x` attempt used the default SCF threshold of $10^{-8}$ Ry and fail
 | $r_{\mathrm{NH}}$ | 1.0207 &Aring; | 1.012 &Aring; | +0.0087 &Aring; (+0.86%) |
 | $\angle$HNH | 106.54&deg; | 106.67&deg; | -0.13&deg; |
 
-The three N-H bonds and the three H-N-H angles stay equal to within $10^{-4}$ &Aring; and $10^{-3}$&deg;, so the relaxation preserved the C$_{3v}$ shape. PBE lengthens the N-H bond by 0.9%. GGA functionals typically slightly overestimate bond lengths, and a longer bond is a softer bond, which matters for the stretching frequencies in Section 3.5.
+The three N-H bonds and the three H-N-H angles stay equal to within $10^{-4}$ &Aring; and $10^{-3}$&deg;, so the relaxation preserved the $C_{3v}$ shape. PBE lengthens the N-H bond by 0.9%. GGA functionals typically slightly overestimate bond lengths, and a longer bond is a softer bond, which matters for the stretching frequencies in Section 3.5.
 
 **[TO DO: VESTA snapshot of the relaxed molecule.]**
 
@@ -136,7 +136,7 @@ Each mode was assigned from its eigenvector by computing how it changes the thre
 
 ### 3.3 Number of modes and equation of motion
 
-NH$_3$ has $N = 4$ atoms and therefore $3N = 12$ degrees of freedom. Three describe rigid translation and three describe rigid rotation of the nonlinear molecule, neither of which stretches a bond. That leaves $3N - 6 = 6$ vibrations. Because of the C$_{3v}$ symmetry they appear as four distinct frequencies: two non-degenerate A$_1$ modes and two doubly degenerate E pairs.
+$NH_3$ has $N = 4$ atoms and therefore $3N = 12$ degrees of freedom. Three describe rigid translation and three describe rigid rotation of the nonlinear molecule, neither of which stretches a bond. That leaves $3N - 6 = 6$ vibrations. Because of the $C_{3v}$ symmetry they appear as four distinct frequencies: two non-degenerate $A_1$ modes and two doubly degenerate E pairs.
 
 The calculation returns all 12 eigenvalues. Six are the vibrations above, and the other six lie between -37 and +49 cm$^{-1}$. These six should be exactly zero, since moving or rotating the whole molecule costs no energy. They are not exactly zero because of:
 
@@ -168,15 +168,15 @@ The Born charges with the acoustic sum rule applied are $-0.383\,e$ for N (mean 
 
 **Figure 3.** (a) Calculated IR spectrum. Each mode is broadened by a Gaussian of $\sigma$ = 20 cm$^{-1}$ for display, and the thin lines are the individual oscillator strengths. The six near-zero modes are omitted. (b) Calculated and experimental band intensities. The calculated intensities are the oscillator strengths converted to km/mol, summed over each degenerate pair.
 
-**All four fundamentals are IR active**, and the spectrum shows four peaks, as expected. NH$_3$ belongs to point group C$_{3v}$. Its vibrations transform as $2A_1 + 2E$, and in C$_{3v}$ the dipole components transform as $A_1$ ($z$) and $E$ ($x, y$). Every vibration can therefore change the dipole: the A$_1$ modes along the C$_3$ axis and the E modes perpendicular to it. Six vibrations give four peaks because each degenerate pair absorbs at one frequency. NH$_3$ has no inversion center, so nothing forces any mode to be IR inactive, unlike the symmetric stretch of CO$_2$. (All four NH$_3$ fundamentals are also Raman active.)
+**All four fundamentals are IR active**, and the spectrum shows four peaks, as expected. $NH_3$ belongs to point group $C_{3v}$. Its vibrations transform as $2A_1 + 2E$, and in $C_{3v}$ the dipole components transform as $A_1$ ($z$) and $E$ $(x, y)$. Every vibration can therefore change the dipole: the $A_1$ modes along the $C_3$ axis and the E modes perpendicular to it. Six vibrations give four peaks because each degenerate pair absorbs at one frequency. $NH_3$ has no inversion center, so nothing forces any mode to be IR inactive, unlike the symmetric stretch of $CO_2$. (All four $NH_3$ fundamentals are also Raman active.)
 
-The intensities vary by a factor of 26. The umbrella mode dominates: the hydrogens move almost parallel to the C$_3$ axis, which is the direction of the permanent dipole, so the dipole changes strongly. The two stretches are weak even though they move the hydrogens farthest. This illustrates that IR intensity depends on how much the dipole changes, not on how far the atoms move.
+The intensities vary by a factor of 26. The umbrella mode dominates: the hydrogens move almost parallel to the $C_3$ axis, which is the direction of the permanent dipole, so the dipole changes strongly. The two stretches are weak even though they move the hydrogens farthest. This illustrates that IR intensity depends on how much the dipole changes, not on how far the atoms move.
 
 As a check on the dielectric calculation, the Clausius-Mossotti relation for a cubic array of molecules,
 
 $$\frac{\varepsilon - 1}{\varepsilon + 2} = \frac{4\pi\alpha}{3V},$$
 
-gives a mean polarizability $\alpha$ = 2.30 &Aring;$^3$ from $V$ = 3375 &Aring;$^3$. The experimental value is 2.103 &Aring;$^3$, so the calculation is 9.5% high. GGA functionals are known to overestimate molecular polarizabilities somewhat.
+gives a mean polarizability $\alpha = 2.30 &Aring;$^3$ from $V$ = 3375 &Aring;$^3$. The experimental value is $2.103 &Aring;^3$, so the calculation is 9.5% high. GGA functionals are known to overestimate molecular polarizabilities somewhat.
 
 ### 3.5 Comparison with literature
 
@@ -196,13 +196,13 @@ The experimental frequencies are the gas-phase fundamentals compiled by Shimanou
 
 **The umbrella mode** has the largest error, +5.3%, and is a special case. Ammonia can invert through its planar geometry, so the umbrella coordinate has a double-well potential with a barrier of only about 2000 cm$^{-1}$. Tunneling between the wells splits the $\nu_2$ band into two components near 932 and 968 cm$^{-1}$, which average to the tabulated 950 cm$^{-1}$. **[TO DO: confirm the 932/968 cm$^{-1}$ values and the barrier height against a reference.]** A harmonic calculation expands the potential around the bottom of one well, where it is stiffer than the full double well that the vibration actually explores. It therefore overestimates this frequency more than the others.
 
-**Intensities.** The calculated band intensities reproduce the experimental ordering, umbrella > deformation > symmetric stretch > asymmetric stretch, and match the measured values to between 4% (deformation) and 16% (symmetric stretch). That level of agreement is notable, since the Born charges are a separate calculation from the frequencies. It confirms that the `BORN` file was built for the correct atoms and that the dipole response is described well. The conversion to km/mol, $(4.8032\ \text{D}/e\,\text{\AA})^2 \times 42.256$ km/mol per (D/&Aring;)$^2$/amu, assumes the IR code reports $|\partial\boldsymbol\mu/\partial Q|^2$ in $e^2$/amu. The agreement with experiment supports that assumption.
+**Intensities.** The calculated band intensities reproduce the experimental ordering, umbrella > deformation > symmetric stretch > asymmetric stretch, and match the measured values to between 4% (deformation) and 16% (symmetric stretch). That level of agreement is notable, since the Born charges are a separate calculation from the frequencies. It confirms that the `BORN` file was built for the correct atoms and that the dipole response is described well. The conversion to km/mol, $(4.8032\ \text{D}/e\,\text{\AA})^2 \times 42.256$ km/mol per $(D/&Aring;)^2/amu$, assumes the IR code reports $|\partial\boldsymbol\mu/\partial Q|^2$ in $e^2$/amu. The agreement with experiment supports that assumption.
 
 **Other limitations.** The calculation describes one molecule at 0 K in a periodic box, while the measurements are of the gas at room temperature. Box size was not converged separately. The dielectric constant is only 0.8 to 1% above 1, so dipole-dipole interactions between images are small, but a larger box would confirm that. The finite-displacement amplitude (0.0106 &Aring;) is small enough for the harmonic approximation but contributes the numerical noise seen in the near-zero modes.
 
 ## 4. Conclusions
 
-PBE with SSSP ultrasoft pseudopotentials, 70 Ry, and a 15 &Aring; box reproduces the structure and IR spectrum of NH$_3$ well. The bond length is 0.9% long, three of four vibrational frequencies are within 2.2% of experiment, and the IR band intensities are within 16%. The calculation gives $3N = 12$ eigenvalues, of which six are near-zero translations and rotations and six are the $2A_1 + 2E$ vibrations. All four distinct fundamentals are IR active because NH$_3$ has C$_{3v}$ symmetry and no inversion center. The largest error, in the umbrella mode, comes from the harmonic approximation applied to the double-well inversion potential. An anharmonic treatment of that coordinate would be the most direct improvement.
+PBE with SSSP ultrasoft pseudopotentials, 70 Ry, and a 15 $&Aring;$ box reproduces the structure and IR spectrum of $NH_3$ well. The bond length is 0.9% long, three of four vibrational frequencies are within 2.2% of experiment, and the IR band intensities are within 16%. The calculation gives $3N = 12$ eigenvalues, of which six are near-zero translations and rotations and six are the $2A_1 + 2E$ vibrations. All four distinct fundamentals are IR active because $NH_3$ has $C_{3v}$ symmetry and no inversion center. The largest error, in the umbrella mode, comes from the harmonic approximation applied to the double-well inversion potential. An anharmonic treatment of that coordinate would be the most direct improvement.
 
 ## Appendix A. `ph.x` convergence
 
@@ -214,7 +214,7 @@ The first `ph.x` run used an SCF converged to $10^{-8}$ Ry. The linear-response 
 
 ## Appendix B. IR-code frequency conversion
 
-The IR code reported every frequency 3.264% higher than Phonopy's `qpoints.yaml`, although both use the same `FORCE_SETS`. The ratio is the same for every mode, and for the Week 6 H$_2$O calculation. It equals the ratio of the conversion factor set in `IRDipoleApprox.py` (`VaspToCm*14.399652/2`, about 3754.5) to the Quantum ESPRESSO conversion factor (3635.80974105). The frequencies in this report are taken from `qpoints.yaml`. The oscillator strengths, which are built from the eigenvectors and Born charges and should not depend on this factor, are taken from the IR code. **[TO DO: rerun `data_treat.py` with `factor=3635.80974105` and confirm that the frequencies match `qpoints.yaml` and the oscillator strengths are unchanged.]**
+The IR code reported every frequency 3.264% higher than Phonopy's `qpoints.yaml`, although both use the same `FORCE_SETS`. The ratio is the same for every mode, and for the Week 6 $H_2 O$ calculation. It equals the ratio of the conversion factor set in `IRDipoleApprox.py` (`VaspToCm*14.399652/2`, about 3754.5) to the Quantum ESPRESSO conversion factor (3635.80974105). The frequencies in this report are taken from `qpoints.yaml`. The oscillator strengths, which are built from the eigenvectors and Born charges and should not depend on this factor, are taken from the IR code. **[TO DO: rerun `data_treat.py` with `factor=3635.80974105` and confirm that the frequencies match `qpoints.yaml` and the oscillator strengths are unchanged.]**
 
 ## References
 
