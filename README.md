@@ -21,20 +21,6 @@ The week folders are the working directories from the course, including repeated
 - Weeks 8–10: TIP4P/2005 timestep and ensemble tests, then DeePMD water, which the diffusion project builds on. The comparison plots are in `WEEK 9/comparison_plots/`.
 - Week 13: silicon conventional cell, supercell, and a defective supercell (`Si.vasp`, `Si_supercell.vasp`, `Si_supercell_defect.vasp`).
 
-## What stays local
-
-These files are still in the course folder on disk. They are listed in `.gitignore`.
-
-- Quantum ESPRESSO restart data: wavefunction files, charge densities, and `*.save/` directories.
-- Phonon scratch from the ammonia dielectric run (`nh3.mixd1` is 1.8 GB; `nh3.prd1` and `nh3.recover` are also over the 100 MB limit).
-- AIMD trajectories (`*.mdtrj`), the large `32h2o_qe.out` logs, and `data-file-schema.xml`.
-- LAMMPS trajectories (`*.lammpstrj`) and DeePMD `graph.pb` weights.
-- Pseudopotential files (`.upf`). The germanium report names the ones it used: SSSP 1.3.0 efficiency `ge_pbe_v1.4.uspp.F.UPF`, ONCVPSP `Ge.upf`, and SG15 `Ge_ONCV_PBE-1.2.upf`. Hydrogen and nitrogen used the SSSP 1.3.0 efficiency ultrasoft files named in the ammonia report.
-- The Jmol application bundle from week 5.
-- Lecture slides, course handouts, textbook chapters, and the *Reviews of Modern Physics* PDF. Those are not mine to post.
-
-Small Quantum ESPRESSO logs from the cutoff and k-point tests are included. So are the LAMMPS logs, MSD tables, and restart files the molecular-dynamics inputs read.
-
 ## Re-running a calculation
 
 Each production job has a Quantum ESPRESSO `*.in` file or a LAMMPS input next to a `submit.sh`. The reports give the code versions (Quantum ESPRESSO 7.4.1 or 7.5, Phonopy 2.21.2) and the converged settings. Pseudopotentials come from the [SSSP library](https://www.materialscloud.org/discover/sssp), [ONCVPSP](http://www.quantum-simulation.org/potentials/sg15_oncv/), and SG15, not from this repository.
