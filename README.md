@@ -1,16 +1,14 @@
-# Computational materials work (MATE 250)
+# Density Functional Theory and Computational Materials work
 
-Coursework from SJSU MATE 250, Advanced Computational Materials Engineering (Fall 2026). The calculations use Quantum ESPRESSO for density-functional theory and LAMMPS for classical and machine-learned molecular dynamics.
-
-This repository keeps the inputs, analysis scripts, plots, structures, and writeups. Multi-gigabyte run products stay in the local course folder. GitHub rejects files over 100 MB and a single push over 2 GB, and those products can be regenerated from the inputs.
+This repository keeps the inputs, analysis scripts, plots, structures, and writeups for multiple density functional theory (DFT) models and other computational materials simulations. The original source is my own coursework from MATE 250, a graduate course in Advanced Computational Materials Engineering offered at San Jose State University (Fall 2026). The calculations use Quantum ESPRESSO for density-functional theory and LAMMPS for classical and machine-learned molecular dynamics.
 
 ## Start here
 
 | Project | What it shows | Writeup |
 | --- | --- | --- |
-| Germanium electronic structure | Cutoff and k-point convergence, variable-cell relaxation, and a PBE band gap with ultrasoft (SSSP) and norm-conserving (ONCV) pseudopotentials, plus a SCAN single point | [`WEEK 4/germanium_report_combined/Week4_Germanium_Combined_Report.md`](WEEK%204/germanium_report_combined/Week4_Germanium_Combined_Report.md) |
-| Ammonia vibrations and IR | PBE relaxation, Phonopy finite-displacement modes, and DFPT Born charges and dielectric tensor for the IR intensities | [`WEEK 7/nh3_report/Week7_NH3_IR_Report.md`](WEEK%207/nh3_report/Week7_NH3_IR_Report.md) |
-| Water self-diffusion | TIP4P/2005, a SCAN-trained DeePMD potential, and SCAN AIMD, compared through the oxygen Einstein slope | [`WEEK 11/Paper/Project3_report.md`](WEEK%2011/Paper/Project3_report.md) |
+| Germanium electronic structure | Cutoff and k-point convergence, variable-cell relaxation, and a PBE band gap with ultrasoft (SSSP) and norm-conserving (ONCV) pseudopotentials, plus a SCAN single point | [`Link`](WEEK%204/germanium_report_combined/Week4_Germanium_Combined_Report.md) |
+| Ammonia vibrations and IR | PBE relaxation, Phonopy finite-displacement modes, and DFPT Born charges and dielectric tensor for the IR intensities | [`Link`](WEEK%207/nh3_report/Week7_NH3_IR_Report.md) |
+| Water self-diffusion | TIP4P/2005, a SCAN-trained DeePMD potential, and SCAN AIMD, compared through the oxygen Einstein slope | [`Link`](WEEK%2011/Paper/Project3_report.md) |
 
 The week folders are the working directories from the course, including repeated AIMD attempts under `WEEK 11/week11/week11-round*`. The table above is the path through the finished analysis.
 
