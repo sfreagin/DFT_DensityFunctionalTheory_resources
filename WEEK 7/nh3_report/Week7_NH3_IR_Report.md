@@ -1,4 +1,4 @@
-# Week 7 Project: Vibrational modes and IR spectrum of an isolated NH$_3$ molecule
+# Week 7 Project: Vibrational modes and IR spectrum of an isolated $NH_3$ molecule
 
 **MATE 250**  
 **Stephen Reagin**
